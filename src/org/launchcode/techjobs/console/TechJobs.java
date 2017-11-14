@@ -1,8 +1,6 @@
 package org.launchcode.techjobs.console;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -61,9 +59,13 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
-                    System.out.println("Search all fields not yet implemented.");
-                } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
+
+                } else {
+                    printJobs(JobData.findByValue(searchTerm));
+
+
+
                 }
             }
         }
@@ -111,6 +113,66 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+
+
+            String newline = System.getProperty("line.separator");
+
+            for (HashMap<String,String> jobs : someJobs) {
+
+                System.out.println("*****");
+
+                for (Map.Entry<String, String> oneJob : jobs.entrySet()) {
+
+                    String key = oneJob.getKey();
+
+                    String value = oneJob.getValue();
+
+                    System.out.println(key + " : " + value);
+
+                }
+
+                System.out.println("*****" + newline);
+
+            }
+
+            if (someJobs.isEmpty()){
+
+                System.out.println("Not Found");
+
+            }
+
+
+
+       // for (int a = 0; a < someJobs.size(); a++) {
+         //   HashMap<String, String> tmpData = (HashMap<String, String>) someJobs.get(a);
+
+            //key is set as collection containing all keys in map
+           // Set<String> key = tmpData.keySet();
+            //it goes over each key
+            //Iterator it = key.iterator();
+
+
+
+              //  while (it.hasNext()) {
+                //    String hmKey = (String) it.next();
+                  //  String hmData = (String) tmpData.get(hmKey);
+
+                    //if(tmpData.containsKey(hmKey)) {
+                    //System.out.println(hmKey + ":  " + hmData);
+                //}
+
+
+
+
+            //System.out.println("*****");
+
+
+
+        //}
+
+
+
+
     }
+
 }
